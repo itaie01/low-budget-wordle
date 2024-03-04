@@ -219,7 +219,7 @@ function App() {
                 <Key character={'b'} fn={playLetter} />
                 <Key character={'n'} fn={playLetter} />
                 <Key character={'m'} fn={playLetter} />
-                <Key character={'⃠'} fn={deleteLetter} />
+                <Key character={'␡'} fn={deleteLetter} />
             </div>
         </div>
     )
