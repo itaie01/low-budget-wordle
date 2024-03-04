@@ -62,6 +62,7 @@ function App() {
     const [guess, setGuess] = useState('')
 
     const playLetter = event => {
+        console.log(`${row}${col}`);
         const l = event.target.innerHTML;
         const curPos = document.getElementById(`${row}${col}`);
         curPos.innerHTML = l
@@ -89,11 +90,9 @@ function App() {
         for (let i = 0; i < guessSplit.length; i++) {
             if (guessSplit[i] === solutionSplit[i]) {
                 guessStatus.push('g')
-                continue
             }
             else if (solutionSplit.includes(guessSplit[i])) {
                 guessStatus.push('y')
-                continue
             }
             else {
                 guessStatus.push('n')
@@ -136,7 +135,8 @@ function App() {
     }
 
     const checkAnswer = () => {
-        if (col < 5) {
+        console.log(`${col}`);
+        if (col < 6) {
             alert("Not enough letters");
         }
         else {
@@ -176,56 +176,52 @@ function App() {
     }, [])
 
     return (
-        <>
-            <div className='container mx-auto max-w-[600px]'>
-                <h1 className='text-center'>Low Budget Wordle Clone</h1>
-                {/* <div className='flex justify-center'>
-                    <div className='border-2 box-border border-emerald-500'>
-                        <Row charList={solution.split('')} />
-                    </div>
-                </div> */}
-                <div className='flex justify-center'>
-                    <GameBoard attempts={resetBoard()} />
+        <div className='container mx-auto max-w-[600px]'>
+            <h1 className='text-center'>Low Budget Wordle Clone</h1>
+            <div className='flex justify-center'>
+                <div className='border-2 box-border border-emerald-500'>
+                    <Row charList={solution.split('')} />
                 </div>
-
-                <div className='flex justify-center mt-2'>
-                    <Key character={'q'} fn={playLetter} />
-                    <Key character={'w'} fn={playLetter} />
-                    <Key character={'e'} fn={playLetter} />
-                    <Key character={'r'} fn={playLetter} />
-                    <Key character={'t'} fn={playLetter} />
-                    <Key character={'y'} fn={playLetter} />
-                    <Key character={'u'} fn={playLetter} />
-                    <Key character={'i'} fn={playLetter} />
-                    <Key character={'o'} fn={playLetter} />
-                    <Key character={'p'} fn={playLetter} />
-                </div>
-                <div className='flex justify-center'>
-                    <Key character={'a'} fn={playLetter} />
-                    <Key character={'s'} fn={playLetter} />
-                    <Key character={'d'} fn={playLetter} />
-                    <Key character={'f'} fn={playLetter} />
-                    <Key character={'g'} fn={playLetter} />
-                    <Key character={'h'} fn={playLetter} />
-                    <Key character={'j'} fn={playLetter} />
-                    <Key character={'k'} fn={playLetter} />
-                    <Key character={'l'} fn={playLetter} />
-                </div>
-                <div className='flex justify-center'>
-                    <Key character={'☑️'} fn={checkAnswer} />
-                    <Key character={'z'} fn={playLetter} />
-                    <Key character={'x'} fn={playLetter} />
-                    <Key character={'c'} fn={playLetter} />
-                    <Key character={'v'} fn={playLetter} />
-                    <Key character={'b'} fn={playLetter} />
-                    <Key character={'n'} fn={playLetter} />
-                    <Key character={'m'} fn={playLetter} />
-                    <Key character={'⃠'} fn={deleteLetter} />
-                </div>
-
-
             </div>
-        </>
+            <div className='flex justify-center'>
+                <GameBoard attempts={resetBoard()} />
+            </div>
+
+            <div className='flex justify-center mt-2'>
+                <Key character={'q'} fn={playLetter} />
+                <Key character={'w'} fn={playLetter} />
+                <Key character={'e'} fn={playLetter} />
+                <Key character={'r'} fn={playLetter} />
+                <Key character={'t'} fn={playLetter} />
+                <Key character={'y'} fn={playLetter} />
+                <Key character={'u'} fn={playLetter} />
+                <Key character={'i'} fn={playLetter} />
+                <Key character={'o'} fn={playLetter} />
+                <Key character={'p'} fn={playLetter} />
+            </div>
+            <div className='flex justify-center'>
+                <Key character={'a'} fn={playLetter} />
+                <Key character={'s'} fn={playLetter} />
+                <Key character={'d'} fn={playLetter} />
+                <Key character={'f'} fn={playLetter} />
+                <Key character={'g'} fn={playLetter} />
+                <Key character={'h'} fn={playLetter} />
+                <Key character={'j'} fn={playLetter} />
+                <Key character={'k'} fn={playLetter} />
+                <Key character={'l'} fn={playLetter} />
+            </div>
+            <div className='flex justify-center'>
+                <Key character={'☑️'} fn={checkAnswer} />
+                <Key character={'z'} fn={playLetter} />
+                <Key character={'x'} fn={playLetter} />
+                <Key character={'c'} fn={playLetter} />
+                <Key character={'v'} fn={playLetter} />
+                <Key character={'b'} fn={playLetter} />
+                <Key character={'n'} fn={playLetter} />
+                <Key character={'m'} fn={playLetter} />
+                <Key character={'⃠'} fn={deleteLetter} />
+            </div>
+        </div>
     )
 }
 
